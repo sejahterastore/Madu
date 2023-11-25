@@ -19,20 +19,19 @@ $(document).on('click', '.send', function() {
     }
 
     // Validation: Check if input_phone contains only numbers
-    // if (!/^\d+$/.test(input_phone)) {
-    //     document.getElementById("text-info").innerHTML = '<div class="alert alert-danger">Invalid phone number format</div>';
-    //     document.getElementById("text-info2").innerHTML = '<div class="alert alert-danger">Invalid phone number format</div>';
-    //     return; // Stop further execution
-    // }
+    if (!/^\d+$/.test(input_phone)) {
+        document.getElementById("text-info").innerHTML = '<div class="alert alert-danger">Invalid phone number format</div>';
+        return; // Stop further execution
+    }
 
     if (input_name != "" && input_phone != "" && input_pembayaran != "" && input_madu != "" && input_description != "") {
         /* Whatsapp URL */
         var checkout_whatsapp = walink + '?phone=' + phone + '&text=' + text + '%0A%0A' +
-            '*Nama* : ' + input_name + '%0A' +
+            '*Nama Lengkap Penerima* : ' + input_name + '%0A' +
             '*No. Whatsapp* : ' + input_phone + '%0A' +
-            '*Pembayaran* : ' + input_pembayaran + '%0A' +
+            '*Alamat Lengkap* : ' + input_description + '%0A' +
             '*Madu* : ' + input_madu + '%0A' +
-            '*Alamat Lengkap* : ' + input_description + '%0A';
+            '*Pembayaran* : ' + input_pembayaran + '%0A' ;
 
         /* Whatsapp Window Open */
         window.open(checkout_whatsapp, '_blank');
